@@ -1,0 +1,38 @@
+#!/bin/bash
+
+
+TARGET=UniversalREADME
+THISDIR=$PWD
+TEMPDIR=~/.temp
+mkdir ${TEMPDIR}
+cd ${TEMPDIR}
+
+git clone ssh://joseagge@josephpesco.info:21098/home/joseagge/git/${TARGET}
+
+cd ${TARGET}
+
+vim README
+
+mv README README.tempory
+echo >> README
+datestamp >> README
+uname -n -r -o >> README
+echo "$THISDIR" >> README
+echo >> README
+cat README.tempory >> README
+rm README.tempory
+
+
+git add . 
+git commit -m"Universal README"
+
+git push
+
+git clone ssh://joseagge@josephpesco.info:21098/home/joseagge/git/${TARGET}
+
+mv README ~/README.uread
+
+THISDIR=$PWD
+cd ~
+rm -r -f "$TEMPDIR"
+

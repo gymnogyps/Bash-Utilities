@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo  `uuidgen`.`date +%Y%m%d%H%M%z`
+
+# date +%Y%m%d%H%M%z
+
+# ; uuidgen
